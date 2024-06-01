@@ -4,29 +4,29 @@
 -- tables
 -- Table: Favourites
 CREATE TABLE "Favourites" (
-    "Users_Id" int  NOT NULL,
-    "Products_Id" int  NOT NULL,
+    "users_Id" int  NOT NULL,
+    "products_Id" int  NOT NULL,
     CONSTRAINT "Favourites_pk" PRIMARY KEY ("Users_Id","Products_Id")
 );
 
 -- Table: Products
 CREATE TABLE "Products" (
-    "Id" int  NOT NULL,
-    "Name" varchar(50)  NULL,
-    "Url" varchar(70)  NOT NULL,
-    "Cena" decimal(3,2)  NULL,
-    "Opis" text  NULL,
-    "Json" text  NULL,
-    CONSTRAINT "Products_pk" PRIMARY KEY ("Id")
+    "id" int  NOT NULL,
+    "name" varchar(50)  NULL,
+    "url" varchar(70)  NOT NULL,
+    "price" decimal(3,2)  NULL,
+    "description" text  NULL,
+    "json" text  NULL,
+    CONSTRAINT "Products_pk" PRIMARY KEY ("id")
 );
 
 -- Table: Users
 CREATE TABLE "Users" (
-    "Id" int  NOT NULL,
+    "id" int  NOT NULL,
     "username" varchar(25)  NOT NULL,
     "password" varchar(32)  NOT NULL,
     "email" varchar(32)  NULL,
-    CONSTRAINT "Users_pk" PRIMARY KEY ("Id")
+    CONSTRAINT "Users_pk" PRIMARY KEY ("id")
 );
 
 -- foreign keys

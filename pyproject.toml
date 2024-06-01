@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "programowanie-zespolowe"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+uvicorn = "^0.30.0"
+sqlalchemy = "^2.0.30"
+asyncpg = "^0.29.0"
+black = "^24.4.2"
+isort = "^5.13.2"
+
+[tool.black]
+line-length = 72
+exclude = '''
+/(
+    .git
+  | .env
+  | .mypy_cache
+  | .tox
+  | .venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+[tool.isort]
+profile = "black"
+skip = [".env", "config", "migrations", "scripts"]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -29,7 +29,9 @@ class Users(BaseTableModel):
     username: orm.Mapped[str]
     password: orm.Mapped[str]
     email: orm.Mapped[str]
-    favourite_products: orm.Mapped[list["Products"]] = orm.relationship(secondary=favourites, backref='users')
+    favourite_products: orm.Mapped[list["Products"]] = orm.relationship(
+        secondary=favourites, backref="users"
+    )
 
 
 class Products(BaseTableModel):
@@ -42,4 +44,6 @@ class Products(BaseTableModel):
     price: orm.Mapped[float]
     description: orm.Mapped[str]
     json: orm.Mapped[str]
-    users: orm.Mapped[list["Users"]] = orm.relationship(secondary=favourites, backref='products')
+    users: orm.Mapped[list["Users"]] = orm.relationship(
+        secondary=favourites, backref="products"
+    )

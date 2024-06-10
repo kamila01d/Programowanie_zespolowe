@@ -19,10 +19,9 @@ class BaseTableObjectModel(BaseOrmModel):
 
 class UsersModel(BaseTableObjectModel):
     """User Model."""
-
-    username: str = Field(max_length=32)
-    password: str = Field(min_length=32, max_length=32)
-    email: str = Field(max_length=32)
+    username: str = Field(max_length=50)
+    password: str
+    email: str = Field(max_length=50)
 
 
 class ProductsModel(BaseTableObjectModel):

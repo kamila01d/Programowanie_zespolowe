@@ -7,9 +7,9 @@ from pydantic import BaseModel, Field
 class UsersPayload(BaseModel):
     """User schema for api calls."""
 
-    username: str = Field(max_length=32)
-    password: str = Field(min_length=32, max_length=32)
-    email: str = Field(max_length=32)
+    username: str
+    password: str
+    email: str
 
 
 class ProductsPayload(BaseModel):
@@ -24,5 +24,13 @@ class ProductsPayload(BaseModel):
 
 class FavouritesPayload(BaseModel):
     """Model to add favourites to user."""
-
     product_id: uuid.UUID
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None

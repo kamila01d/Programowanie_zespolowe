@@ -25,7 +25,7 @@ UsersRepository = Annotated[
 async def read_users_me(
     current_user: models.UsersModel = Depends(get_current_user),
 ):
-    return await current_user
+    return current_user
 
 
 @users_router.post("/{user_id}", status_code=status.HTTP_200_OK)

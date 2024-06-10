@@ -43,7 +43,7 @@ class Products(BaseTableModel):
     url: orm.Mapped[str]
     price: orm.Mapped[float]
     description: orm.Mapped[str]
-    json: orm.Mapped[str]
+    json_: orm.Mapped[str]
     users: orm.Mapped[list["Users"]] = orm.relationship(
-        secondary=favourites
+        secondary=favourites, overlaps="favourite_products"
     )

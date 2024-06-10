@@ -19,17 +19,13 @@ class ProductsPayload(BaseModel):
     url: str = Field(max_length=70)
     price: Decimal
     description: str = Field(max_length=200)
-    json: str
+    json_: str
 
 
 class FavouritesPayload(BaseModel):
     """Model to add favourites to user."""
+
     product_id: uuid.UUID
-
-
-class Token(BaseModel):
-    access_token: str
-    token_type: str
 
 
 class TokenData(BaseModel):

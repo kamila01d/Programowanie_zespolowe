@@ -6,7 +6,7 @@ from httpx import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.api import models, schemas
-from src.api.dependencies import get_repository
+from src.api.dependencies import get_current_user, get_repository
 from src.api.routes.products_routes import ProductsRepository
 from src.database import models as db_models
 from src.database.database import get_db_session
@@ -21,32 +21,11 @@ UsersRepository = Annotated[
 ]
 
 
-@users_router.post("/new", status_code=status.HTTP_201_CREATED)
-async def create_user(
-    data: schemas.UsersPayload,
-    repository: UsersRepository,
-) -> models.UsersModel:
-    user = await repository.create(data.dict())
-    return models.UsersModel.model_validate(user)
-
-
-@users_router.get("/", status_code=status.HTTP_200_OK)
-async def get_users(
-    repository: UsersRepository,
-) -> list[models.UsersModel]:
-    users = await repository.get_all()
-    return [models.UsersModel.model_validate(user) for user in users]
-
-
-@users_router.get("/{user_id}", status_code=status.HTTP_200_OK)
-async def get_user(
-    user_id: uuid.UUID,
-    repository: UsersRepository,
-) -> models.UsersModel:
-    user = await repository.get(user_id)
-    if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
-    return models.UsersModel.model_validate(user)
+@users_router.get("/me")
+async def read_users_me(
+    current_user: models.UsersModel = Depends(get_current_user),
+):
+    return await current_user
 
 
 @users_router.post("/{user_id}", status_code=status.HTTP_200_OK)

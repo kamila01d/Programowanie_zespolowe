@@ -19,6 +19,7 @@ class BaseTableObjectModel(BaseOrmModel):
 
 class UsersModel(BaseTableObjectModel):
     """User Model."""
+
     username: str = Field(max_length=50)
     password: str
     email: str = Field(max_length=50)
@@ -31,4 +32,9 @@ class ProductsModel(BaseTableObjectModel):
     url: str = Field(max_length=70)
     price: Decimal
     description: str = Field(max_length=200)
-    json: str
+    json_: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str

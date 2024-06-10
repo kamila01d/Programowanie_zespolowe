@@ -2,11 +2,12 @@ import uuid
 from typing import Generic, TypeVar
 
 from fastapi import HTTPException, status
-from sqlalchemy import select
+from sqlalchemy import BinaryExpression, select
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import models
+from src.database.models import Users
 
 Model = TypeVar("Model", bound=models.BaseTableModel)
 
@@ -55,3 +56,9 @@ class DatabaseRepository(Generic[Model]):
             return instance
         except SQLAlchemyError:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
+
+    async def filter_user_name(self, username) -> Model:
+        query = select(models.Users)
+        query = query.where(models.Users.username == username)
+        result = await self.session.execute(query)
+        return result.scalars().first()

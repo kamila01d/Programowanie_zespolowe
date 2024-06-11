@@ -28,7 +28,9 @@ RepositoryDB = Annotated[
 ]
 
 
-async def get_current_user(user_repository: RepositoryDB, token: str = Depends(oauth2_scheme)):
+async def get_current_user(
+    user_repository: RepositoryDB, token: str = Depends(oauth2_scheme)
+):
 
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -43,9 +45,7 @@ async def get_current_user(user_repository: RepositoryDB, token: str = Depends(o
     if username is None:
         raise credentials_exception
 
-    user = await user_repository.filter_user_name(
-        username=username
-    )
+    user = await user_repository.filter_user_name(username=username)
     if user is None:
         raise credentials_exception
 

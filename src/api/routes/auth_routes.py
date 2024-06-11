@@ -17,9 +17,7 @@ auth_router = APIRouter(prefix="/users", tags=["auth"])
 async def create_user(
     user: schemas.UsersPayload, user_repository: UsersRepository
 ):
-    db_user = await user_repository.filter_user_name(
-        user.username
-    )
+    db_user = await user_repository.filter_user_name(user.username)
 
     if db_user:
         raise HTTPException(
@@ -36,13 +34,12 @@ async def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
 ) -> models.Token:
 
-    user = await user_repository.filter_user_name(
-        form_data.username
-    )
+    user = await user_repository.filter_user_name(form_data.username)
 
-    if not utils.verify_password(
-        form_data.password, user.password
-    ) or not user:
+    if (
+        not utils.verify_password(form_data.password, user.password)
+        or not user
+    ):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",

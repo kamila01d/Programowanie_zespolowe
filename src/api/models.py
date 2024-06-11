@@ -17,14 +17,6 @@ class BaseTableObjectModel(BaseOrmModel):
     pk: uuid.UUID = Field(default_factory=uuid.uuid4)
 
 
-class UsersModel(BaseTableObjectModel):
-    """User Model."""
-
-    username: str = Field(max_length=50)
-    password: str
-    email: str = Field(max_length=50)
-
-
 class ProductsModel(BaseTableObjectModel):
     """Product model."""
 
@@ -33,6 +25,15 @@ class ProductsModel(BaseTableObjectModel):
     price: Decimal
     description: str = Field(max_length=200)
     json_: str
+
+
+class UsersModel(BaseTableObjectModel):
+    """User Model."""
+
+    username: str = Field(max_length=50)
+    password: str
+    email: str = Field(max_length=50)
+    favourites: list[ProductsModel]
 
 
 class Token(BaseModel):

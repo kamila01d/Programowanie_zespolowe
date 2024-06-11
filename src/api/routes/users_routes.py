@@ -23,7 +23,7 @@ UsersRepository = Annotated[
 
 @users_router.get("/me")
 async def read_users_me(
-    current_user: models.UsersModel = Depends(get_current_user),
+    current_user: models.UsersModel = Depends(get_current_user)
 ):
     return current_user
 
@@ -48,8 +48,6 @@ async def delete_user(
 ):
     try:
         user = await usr_repository.get(user_id)
-        for product in user.favourite_products:
-            product.users.remove(user)
 
         user.favourite_products.clear()
         await session.commit()
@@ -65,7 +63,7 @@ async def delete_user(
 @users_router.put(
     "/favourites/{user_id}", status_code=status.HTTP_200_OK
 )
-async def get_favourites(
+async def add_favourites(
     user_id: uuid.UUID,
     data: schemas.FavouritesPayload,
     usr_repository: UsersRepository,
@@ -73,7 +71,7 @@ async def get_favourites(
     session: AsyncSession = Depends(get_db_session),
 ):
     user = await usr_repository.get(user_id)
-    product = await prod_repository.get(data.get("product_id"))
+    product = await prod_repository.get(data.product_id)
 
     if product is None:
         raise HTTPException(
@@ -83,20 +81,19 @@ async def get_favourites(
 
     try:
         user.favourite_products.append(product)
-        product.users.append(user)
 
         await session.commit()
-        await session.refresh(product)
         await session.refresh(user)
 
         return status.HTTP_200_OK
-    except Exception:
+    except Exception as e:
+        print(e)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
 
-@users_router.put(
+@users_router.delete(
     "/favourites/{user_id}", status_code=status.HTTP_200_OK
 )
 async def delete_favourites(
@@ -117,7 +114,6 @@ async def delete_favourites(
 
     try:
         user.favourite_products.remove(product)
-        product.users.remove(user)
 
         await session.commit()
         await session.refresh(product)

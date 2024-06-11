@@ -33,7 +33,6 @@ class UsersModel(BaseTableObjectModel):
     username: str = Field(max_length=50)
     password: str
     email: str = Field(max_length=50)
-    favourites: list[ProductsModel]
 
 
 class Token(BaseModel):

@@ -1,5 +1,4 @@
 -- tables
-DROP TABLE "favourites";
 
 DROP TABLE "products";
 

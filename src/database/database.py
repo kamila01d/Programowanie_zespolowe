@@ -15,4 +15,4 @@ async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
             await session.commit()
         except exc.SQLAlchemyError as error:
             await session.rollback()
-            raise
+            raise error

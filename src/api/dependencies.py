@@ -7,6 +7,7 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src import utils
+from src.api.models import UsersModel
 from src.database import database, models, repository
 from src.database.repository import DatabaseRepository
 
@@ -49,4 +50,5 @@ async def get_current_user(
     if user is None:
         raise credentials_exception
 
-    return user
+    print(user.favourite_products)
+    return UsersModel.model_validate(user)

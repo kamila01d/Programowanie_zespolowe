@@ -42,5 +42,4 @@ class Products(BaseTableModel):
     name: orm.Mapped[str]
     url: orm.Mapped[str]
     price: orm.Mapped[float]
-    description: orm.Mapped[str]
     json_: orm.Mapped[str]

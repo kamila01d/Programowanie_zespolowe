@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.api import models, schemas
 from src.api.dependencies import get_current_user, get_repository
+from src.api.models import UserDetails
 from src.api.routes.products_routes import ProductsRepository
 from src.database import models as db_models
 from src.database.database import get_db_session
@@ -23,9 +24,14 @@ UsersRepository = Annotated[
 
 @users_router.get("/me")
 async def read_users_me(
-    current_user: models.UsersModel = Depends(get_current_user)
+    current_user: models.UsersModel = Depends(get_current_user),
 ):
-    return current_user
+    return await UserDetails(
+        username=current_user.username,
+        password=current_user.password,
+        email=current_user.email,
+        favourites=list([product for product in current_user.favourite_products]),
+    )
 
 
 @users_router.post("/{user_id}", status_code=status.HTTP_200_OK)

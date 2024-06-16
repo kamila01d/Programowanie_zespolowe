@@ -18,7 +18,6 @@ class ProductsPayload(BaseModel):
     name: str = Field(max_length=50)
     url: str = Field(max_length=70)
     price: Decimal
-    description: str = Field(max_length=200)
     json_: str
 
 

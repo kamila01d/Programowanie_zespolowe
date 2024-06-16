@@ -50,8 +50,4 @@ async def get_current_user(
     if user is None:
         raise credentials_exception
 
-    favourites = user.favourite_products
-    return {
-        **UsersModel.model_validate(user),
-        "favourites": favourites
-    }
+    return user

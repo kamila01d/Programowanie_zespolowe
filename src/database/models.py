@@ -16,8 +16,18 @@ class BaseTableModel(orm.DeclarativeBase):
 favourites = Table(
     "favourites",
     BaseTableModel.metadata,
-    Column("user_id", UUID(as_uuid=True), ForeignKey("users.pk"), primary_key=True),
-    Column("product_id", UUID(as_uuid=True), ForeignKey("products.pk"), primary_key=True),
+    Column(
+        "user_id",
+        UUID(as_uuid=True),
+        ForeignKey("users.pk"),
+        primary_key=True,
+    ),
+    Column(
+        "product_id",
+        UUID(as_uuid=True),
+        ForeignKey("products.pk"),
+        primary_key=True,
+    ),
 )
 
 
@@ -30,7 +40,7 @@ class Users(BaseTableModel):
     password: orm.Mapped[str]
     email: orm.Mapped[str]
     favourite_products: orm.Mapped[list["Products"]] = orm.relationship(
-        'Products', secondary=favourites, backref="user", lazy="dynamic"
+        "Products", secondary=favourites, backref="user", lazy="dynamic"
     )
 
 

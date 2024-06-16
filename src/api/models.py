@@ -4,6 +4,8 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
+from src.api.schemas import ProductsPayload
+
 
 class BaseTableObjectModel(BaseModel):
     """Base table item model."""
@@ -34,3 +36,10 @@ class UsersModel(BaseTableObjectModel):
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+
+class UserDetails(BaseModel):
+    username: str
+    password: str
+    email: str
+    favourites: List[ProductsPayload]

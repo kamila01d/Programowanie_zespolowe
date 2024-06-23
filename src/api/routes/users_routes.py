@@ -14,6 +14,7 @@ from src.database import models as db_models
 from src.database.database import get_db_session
 from src.database.repository import DatabaseRepository
 from src.settings import settings
+from src.utils import get_password_hash
 
 users_router = APIRouter(prefix="/users", tags=["users"])
 
@@ -38,6 +39,7 @@ async def update_user(
     repository: UsersRepository,
     current_user: models.UsersModel = Depends(get_current_user),
 ) -> dict:
+    data.password = get_password_hash(data.password)
     user = await repository.update(data.dict(), user_id)
     access_token_expires = timedelta(
         minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES

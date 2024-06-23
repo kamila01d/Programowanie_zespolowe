@@ -8,13 +8,13 @@ class BaseOrmModel(BaseModel):
     """Orm model for all objects."""
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class BaseTableObjectModel(BaseOrmModel):
     """Base table item model."""
 
-    pk: uuid.UUID
+    pk: uuid.UUID = Field(default_factory=uuid.uuid4)
 
 
 class UsersModel(BaseTableObjectModel):
@@ -33,8 +33,3 @@ class ProductsModel(BaseTableObjectModel):
     price: Decimal
     description: str = Field(max_length=200)
     json: str
-
-
-class Favourites(BaseOrmModel):
-    Product: ProductsModel
-    User: UsersModel

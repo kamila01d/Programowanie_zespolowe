@@ -3,7 +3,6 @@ from datetime import timedelta
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from httpx import Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src import utils

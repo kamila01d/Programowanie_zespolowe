@@ -1,5 +1,4 @@
 from datetime import timedelta
-from operator import is_
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
@@ -7,7 +6,6 @@ from fastapi.security import OAuth2PasswordRequestForm
 from src import utils
 from src.api import models, schemas
 from src.api.routes.users_routes import UsersRepository
-from src.database import models as db_models
 from src.settings import settings
 
 auth_router = APIRouter(prefix="/users", tags=["auth"])
@@ -25,7 +23,15 @@ async def create_user(
         )
     user.password = utils.get_password_hash(user.password)
     new_user = await user_repository.create(user.dict())
-    return models.UsersModel.model_validate(new_user)
+
+    access_token_expires = timedelta(
+        minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
+    )
+    access_token = utils.create_access_token(
+        data={"sub": new_user.username},
+        expires_delta=access_token_expires,
+    )
+    return models.Token(access_token=access_token, token_type="bearer")
 
 
 @auth_router.post("/token", status_code=status.HTTP_200_OK)
@@ -36,9 +42,8 @@ async def login_for_access_token(
 
     user = await user_repository.filter_user_name(form_data.username)
 
-    if (
-        not utils.verify_password(form_data.password, user.password)
-        or not user
+    if not user or not utils.verify_password(
+        form_data.password, user.password
     ):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

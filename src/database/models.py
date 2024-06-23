@@ -40,7 +40,11 @@ class Users(BaseTableModel):
     password: orm.Mapped[str]
     email: orm.Mapped[str]
     favourite_products: orm.Mapped[list["Products"]] = orm.relationship(
-        "Products", secondary=favourites, backref="user", lazy="dynamic"
+        "Products",
+        secondary=favourites,
+        backref="user_products",
+        lazy="selectin",
+        cascade="all, delete",
     )
 
 
@@ -53,3 +57,10 @@ class Products(BaseTableModel):
     url: orm.Mapped[str]
     price: orm.Mapped[float]
     json_: orm.Mapped[str]
+    users: orm.Mapped[list["Users"]] = orm.relationship(
+        "Users",
+        secondary=favourites,
+        backref="products_user",
+        lazy="selectin",
+        cascade="all, delete",
+    )

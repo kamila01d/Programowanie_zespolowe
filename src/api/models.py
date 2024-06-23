@@ -31,15 +31,9 @@ class UsersModel(BaseTableObjectModel):
     username: str = Field(max_length=50)
     password: str
     email: str = Field(max_length=50)
+    favourites: List[ProductsModel] = Field(default_factory=list)
 
 
 class Token(BaseModel):
     access_token: str
     token_type: str
-
-
-class UserDetails(BaseModel):
-    username: str
-    password: str
-    email: str
-    favourites: List[ProductsPayload]

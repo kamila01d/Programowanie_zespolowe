@@ -2,7 +2,7 @@ import uuid
 from typing import Generic, TypeVar
 
 from fastapi import HTTPException, status
-from sqlalchemy import BinaryExpression, select
+from sqlalchemy import BinaryExpression, select, update
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -18,18 +18,15 @@ class DatabaseRepository(Generic[Model]):
     def __init__(
         self, model: type[Model], session: AsyncSession
     ) -> None:
-        self.model = model
-        self.session = session
+        self.model: type[Model] = model
+        self.session: AsyncSession = session
 
     async def create(self, data: dict) -> Model:
-        try:
-            instance = self.model(**data)
-            self.session.add(instance)
-            await self.session.commit()
-            await self.session.refresh(instance)
-            return instance
-        except SQLAlchemyError:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
+        instance = self.model(**data)
+        self.session.add(instance)
+        await self.session.commit()
+        await self.session.refresh(instance)
+        return instance
 
     async def get(self, pk: uuid.UUID) -> Model | None:
         return await self.session.get(self.model, pk)
@@ -40,22 +37,17 @@ class DatabaseRepository(Generic[Model]):
         return list(result.scalars())
 
     async def delete(self, pk: uuid.UUID) -> None:
-        try:
-            query = await self.session.get(self.model, pk)
-            query.delete(synchronize_session=False)
-            await self.session.commit()
-        except SQLAlchemyError:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
+        instance: Model = await self.session.get(self.model, pk)
+        await self.session.delete(instance)
+        await self.session.commit()
 
     async def update(self, data: dict, pk: uuid.UUID) -> Model:
-        try:
-            instance = await self.session.get(self.model, pk)
-            instance.update(data)
-            await self.session.commit()
-            await self.session.refresh(instance)
-            return instance
-        except SQLAlchemyError:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
+        instance: Model = await self.session.get(self.model, pk)
+        query = update(self.model).values(**data).where(self.model.pk == instance.pk)
+        await self.session.execute(query)
+        await self.session.commit()
+        await self.session.refresh(instance)
+        return instance
 
     async def filter_user_name(self, username) -> Model:
         query = select(models.Users)

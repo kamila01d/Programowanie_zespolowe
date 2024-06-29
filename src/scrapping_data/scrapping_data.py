@@ -1,6 +1,5 @@
-
-from fastapi.requests import Request
 from bs4 import BeautifulSoup
+from fastapi.requests import Request
 from playwright.sync_api import Playwright, expect, sync_playwright
 
 

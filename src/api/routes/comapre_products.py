@@ -1,6 +1,7 @@
-from src.scrapping_data.scrapping_data import *
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
+
+from src.scrapping_data.scrapping_data import *
 
 comapre_product = APIRouter(prefix="/compare-products")
 
@@ -13,10 +14,14 @@ def compare_product(product: str):
 
     merged_json = product_shop1 + product_shop2 + product_shop3
 
-    sorted_json = sorted(merged_json, key=lambda x: x['price'])
+    sorted_json = sorted(merged_json, key=lambda x: x["price"])
 
     response = sorted_json
 
-    formatted_response = json.dumps(response, indent=4, ensure_ascii=False)
+    formatted_response = json.dumps(
+        response, indent=4, ensure_ascii=False
+    )
 
-    return JSONResponse(content=formatted_response, status_code=status.HTTP_200_OK)
+    return JSONResponse(
+        content=formatted_response, status_code=status.HTTP_200_OK
+    )

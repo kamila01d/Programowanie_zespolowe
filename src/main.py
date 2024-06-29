@@ -12,7 +12,14 @@ app.include_router(users_router)
 app.include_router(products_router)
 app.include_router(compare_product)
 
-app.mount("/", StaticFiles(directory="./Programowanie_zespolowe/src/frontend", html=True), name="frontend")
+app.mount(
+    "/",
+    StaticFiles(
+        directory="./Programowanie_zespolowe/src/frontend", html=True
+    ),
+    name="frontend",
+)
+
 
 @app.get("/healtz")
 def read_root():

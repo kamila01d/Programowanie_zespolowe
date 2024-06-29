@@ -1,14 +1,11 @@
 import uuid
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, status
-from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import APIRouter, Depends, status
 
 from src.api import models, schemas
 from src.api.dependencies import get_current_user, get_repository
 from src.database import models as db_models
-from src.database.database import get_db_session
 from src.database.repository import DatabaseRepository
 
 products_router = APIRouter(prefix="/products", tags=["products"])

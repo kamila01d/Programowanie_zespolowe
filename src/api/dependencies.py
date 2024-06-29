@@ -4,13 +4,10 @@ from typing import Annotated
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import AppenderQuery
 
 from src import utils
-from src.api.models import ProductsModel, UsersModel
+from src.api.models import UsersModel
 from src.database import database, models, repository
-from src.database.database import get_db_session
-from src.database.models import Products
 from src.database.repository import DatabaseRepository
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")

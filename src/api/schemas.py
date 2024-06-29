@@ -29,6 +29,7 @@ class FavouritesPayload(BaseModel):
 
 class LoginPayload(BaseModel):
     """Model for user authentication."""
+
     username: str
     password: str
 

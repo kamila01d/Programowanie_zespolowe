@@ -51,7 +51,9 @@ async def update_user(
 
     return {
         "user": models.UsersModel.model_validate(user),
-        "token": models.Token(access_token=access_token, token_type="bearer")
+        "token": models.Token(
+            access_token=access_token, token_type="bearer"
+        ),
     }
 
 

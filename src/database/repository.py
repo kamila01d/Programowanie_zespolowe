@@ -1,13 +1,10 @@
 import uuid
 from typing import Generic, TypeVar
 
-from fastapi import HTTPException, status
-from sqlalchemy import BinaryExpression, select, update
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.database import models
-from src.database.models import Users
 
 Model = TypeVar("Model", bound=models.BaseTableModel)
 
@@ -43,7 +40,11 @@ class DatabaseRepository(Generic[Model]):
 
     async def update(self, data: dict, pk: uuid.UUID) -> Model:
         instance: Model = await self.session.get(self.model, pk)
-        query = update(self.model).values(**data).where(self.model.pk == instance.pk)
+        query = (
+            update(self.model)
+            .values(**data)
+            .where(self.model.pk == instance.pk)
+        )
         await self.session.execute(query)
         await self.session.commit()
         await self.session.refresh(instance)

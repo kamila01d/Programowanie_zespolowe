@@ -1,6 +1,5 @@
-import json
 
-import requests
+from fastapi.requests import Request
 from bs4 import BeautifulSoup
 from playwright.sync_api import Playwright, expect, sync_playwright
 
@@ -118,7 +117,7 @@ def search_morele_net(product_):
     search = product_.replace(" ", "+")
     url = "https://www.morele.net/wyszukiwarka/?q=" + search + "&d=1"
 
-    response = requests.get(url)
+    response = Request.get(url)
     items = []
 
     if response.status_code == 200:

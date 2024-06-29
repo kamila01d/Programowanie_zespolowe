@@ -1,12 +1,14 @@
+import json
+
 from fastapi import APIRouter, status
-from fastapi.responses import JSONResponse
+from starlette.responses import JSONResponse
 
 from src.scrapping_data.scrapping_data import *
 
-comapre_product = APIRouter(prefix="/compare-products")
+compare_product_router = APIRouter(prefix="/compare-products")
 
 
-@comapre_product.get("/", status_code=status.HTTP_200_OK)
+@compare_product_router.get("/", status_code=status.HTTP_200_OK)
 def compare_product(product: str):
     product_shop1 = search_komputronik(product)
     product_shop2 = search_morele_net(product)

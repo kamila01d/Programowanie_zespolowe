@@ -1,28 +1,19 @@
 import uuid
 from decimal import Decimal
+from typing import List
 
 from pydantic import BaseModel, Field
 
-
-class BaseOrmModel(BaseModel):
-    """Orm model for all objects."""
-
-    class Config:
-        from_attributes = True
+from src.api.schemas import ProductsPayload
 
 
-class BaseTableObjectModel(BaseOrmModel):
+class BaseTableObjectModel(BaseModel):
     """Base table item model."""
 
     pk: uuid.UUID = Field(default_factory=uuid.uuid4)
 
-
-class UsersModel(BaseTableObjectModel):
-    """User Model."""
-
-    username: str = Field(max_length=32)
-    password: str = Field(min_length=32, max_length=32)
-    email: str = Field(max_length=32)
+    class Config:
+        from_attributes = True
 
 
 class ProductsModel(BaseTableObjectModel):
@@ -31,5 +22,18 @@ class ProductsModel(BaseTableObjectModel):
     name: str = Field(max_length=50)
     url: str = Field(max_length=70)
     price: Decimal
-    description: str = Field(max_length=200)
-    json: str
+    json_: str
+
+
+class UsersModel(BaseTableObjectModel):
+    """User Model."""
+
+    username: str = Field(max_length=50)
+    password: str
+    email: str = Field(max_length=50)
+    favourites: List[ProductsModel] = Field(default_factory=list)
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str

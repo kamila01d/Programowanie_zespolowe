@@ -27,5 +27,11 @@ class FavouritesPayload(BaseModel):
     product_id: uuid.UUID
 
 
+class LoginPayload(BaseModel):
+    """Model for user authentication."""
+    username: str
+    password: str
+
+
 class TokenData(BaseModel):
     username: str | None = None

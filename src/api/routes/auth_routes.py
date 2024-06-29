@@ -6,6 +6,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from src import utils
 from src.api import models, schemas
 from src.api.routes.users_routes import UsersRepository
+from src.api.schemas import LoginPayload
 from src.settings import settings
 
 auth_router = APIRouter(prefix="/users", tags=["auth"])
@@ -37,7 +38,7 @@ async def create_user(
 @auth_router.post("/token", status_code=status.HTTP_200_OK)
 async def login_for_access_token(
     user_repository: UsersRepository,
-    form_data: OAuth2PasswordRequestForm = Depends(),
+    form_data: LoginPayload,
 ) -> models.Token:
 
     user = await user_repository.filter_user_name(form_data.username)

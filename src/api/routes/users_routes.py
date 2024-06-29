@@ -28,6 +28,7 @@ UsersRepository = Annotated[
 async def read_users_me(
     current_user: models.UsersModel = Depends(get_current_user),
 ):
+    del current_user.password
     return current_user
 
 

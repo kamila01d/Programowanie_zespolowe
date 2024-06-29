@@ -12,19 +12,13 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "test124",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "xx124",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test124\",\r\n    \"password\": \"xx124\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": "localhost:8000/users/token"
 			},

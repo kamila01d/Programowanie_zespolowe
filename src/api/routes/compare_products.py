@@ -11,14 +11,12 @@ def compare_product(product: str):
     product_shop2 = search_morele_net(product)
     product_shop3 = search_euro_agd(product)
 
-    # Create response
-    response = {
-        "product_name": product,
-        "shops": {
-            "komputronik": product_shop1,
-            "morele": product_shop2,
-            "euro": product_shop3
-        }
-    }
+    merged_json = product_shop1 + product_shop2 + product_shop3
 
-    return JSONResponse(content=response, status_code=status.HTTP_200_OK)
+    sorted_json = sorted(merged_json, key=lambda x: x['price'])
+
+    response = sorted_json
+
+    formatted_response = json.dumps(response, indent=4, ensure_ascii=False)
+
+    return JSONResponse(content=formatted_response, status_code=status.HTTP_200_OK)

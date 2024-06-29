@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fe8c09b-c2dd-48e2-9f40-e27038824c5d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/config/local" beforeDir="false" afterPath="$PROJECT_DIR$/config/local" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/compare_products.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/compare_products.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scrapping_data/scrapping_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/scrapping_data/scrapping_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,40 +58,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Database Script.CREATE_DB.sql.executor": "Run",
-    "Database Script.DROP_DB.sql.executor": "Run",
-    "Python.initial_migration.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.settings.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/scrapping__data",
-    "last_opened_file_path": "/Users/kamiladmowska/Documents/GitHub/Programowanie_zespolowe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Database Script.CREATE_DB.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Database Script.DROP_DB.sql.executor&quot;: &quot;Run&quot;,
+    &quot;Python.initial_migration.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/scrapping__data&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kamiladmowska/Documents/GitHub/Programowanie_zespolowe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;postgresql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "47e2673b-eb8a-44e3-b39b-bbee2d525d73",
-      "81184e69-ceb3-4d37-bb31-54602dae2c4c",
-      "7324751a-aa5b-4249-bca0-1116b1729f88",
-      "2549869e-3edb-46fd-a46b-1123dc17c026"
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;47e2673b-eb8a-44e3-b39b-bbee2d525d73&quot;,
+      &quot;81184e69-ceb3-4d37-bb31-54602dae2c4c&quot;,
+      &quot;7324751a-aa5b-4249-bca0-1116b1729f88&quot;,
+      &quot;2549869e-3edb-46fd-a46b-1123dc17c026&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
-      "PostgreSQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.main">
     <configuration name="CREATE_DB.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/scripts/CREATE_DB.sql" />
@@ -220,7 +218,7 @@
       <workItem from="1718305605449" duration="3555000" />
       <workItem from="1718448419545" duration="5666000" />
       <workItem from="1719658491642" duration="994000" />
-      <workItem from="1719674563023" duration="1756000" />
+      <workItem from="1719674563023" duration="2417000" />
     </task>
     <servers />
   </component>

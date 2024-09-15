@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"sshfs.configs": [
+			{
+				"name": "zespolowe",
+				"host": "149.156.43.57",
+				"username": "p1",
+				"password": "test123"
+			}
+		]
+	}
+}

@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
+
+*{
+    width: unset;
+    height: unset;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.productPageScrollWrapper{
+    height: calc(100svh - 60px);
+    overflow-y: scroll;
+}
+
+.productPage{
+    /*height: calc(100svh - 60px);*/
+    /*overflow-y: scroll;*/
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.productContainer{
+    width: calc(100% - 80px - 80px);
+    max-width: 1000px;
+    /*min-width: 400px;*/
+    min-height: 100%;
+
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    padding-inline: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /*background-color: rgb(218, 218, 218);*/
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 400px) {
+
+    .productContainer{
+        width: calc(100% - 10px - 10px);
+    }
+    
+}
+
+.productNameContainer{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-inline: 20px;
+}
+
+.productName{
+    font-size: large;
+    flex-grow: 1;
+}
+
+.productFavourite{
+    width: 30px;
+    height: 30px;
+    background-image: url('../../public/heart.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.favFilled{
+    background-image: url('../../public/heartFilled.png');
+}
+
+.productOverviewContainer{
+    
+    width: 100%;
+    height: max-content;
+    max-width: 1200px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.productGalleryContainer{
+    /*width: calc(100vh - (24px + 20px + 20px) - (40px) - (20px) - (20px) + (40px + 40px));*/
+    /*height: 100%;*/
+    width: 50%;
+    max-width: 600px;
+    /*min-width: 400px;*/
+    aspect-ratio: 1/1;
+
+    margin-inline: 10px;
+    margin-bottom: 20px;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 400px) {
+
+    .productGalleryContainer{
+        width: 100%;
+    }
+    
+}
+
+.productGalleryMainContainer{
+    height: 100%;
+    width: 100%;
+
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.productGalleryMainPhotosContainer{
+    width: 100px;
+    /*aspect-ratio: 1/1;*/
+    align-self: stretch;
+    flex-grow: 1;
+
+    
+}
+
+.productGalleryMainPhotosContainerInner{
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.productGalleryMainArrow{
+    width: 40px;
+    align-self: stretch;
+}
+
+.leftArrow{
+    background-image: url("../../public/arrowL.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.rightArrow{
+    background-image: url("../../public/arrowR.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.producGalleryMainPhotosWrapper{
+    display: flex;
+    height: 100%;
+    width: max-content;
+    position: relative;
+    transition: right ease-in-out 1s;
+}
+
+.producGalleryMainPhoto{
+    height: 100%;
+    aspect-ratio: 1;
+
+    object-fit: contain;
+}
+
+.productGalleryThumb{
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+}
+
+.productGalleryThumbWrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.producGalleryThumbPhoto
+{
+    height: 100%;
+    aspect-ratio: 1;
+
+    object-fit: contain;
+}
+
+.productDescriptionContainer
+{
+    margin-inline: 10px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    min-width: 200px;
+    max-width: 400px;
+    text-align: justify;
+}
+
+.productDescriptionTitle{
+    width: 100%;
+    font-size: small;
+    margin-bottom: 12px;
+}
+
+.productPricingList{
+    max-width: 1000px;
+    width: 100%;
+    padding-inline: 10px;
+    margin-bottom: 20px;
+}
+
+.productPricingListTitle{
+    font-size: small;
+    margin-bottom: 12px;
+}
+
+.productPricingLink{
+    color: unset;
+    text-decoration: none;
+}
+
+.productPricingRow{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 14px;
+}
+
+.productPricingName{
+    flex-grow: 1;
+}
+
+.productPricingPrice{
+    width: max-content;
+    flex-grow: 0;
+    margin-left: 10px;
+}
+
+.productPricingLinkLogo{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    background-image: url('../../public/external-link.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.productListContainer{
+    width: 100%;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: rgb(136, 136, 136);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.productListName{
+    margin-right: 20px;
+    max-width: 400px;
+    height: 20px;
+    max-width: calc(100% - 200px);
+}
+
+.productListThumbnail{
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    object-fit: contain;
+}
+
+.productListPrice{
+    width: 100px;
+    margin-left: auto;
+    margin-right: 20px;
+    text-align: end;
+}
+
+.productListLink{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-image: url('../../public/external-link.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.productListFavFalse{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-image: url('../../public/heart.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.productListFavTrue{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-image: url('../../public/heartFilled.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.productListLinkSection{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: black;
+    flex-grow: 1;
+}

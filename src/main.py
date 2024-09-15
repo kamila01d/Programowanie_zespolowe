@@ -24,7 +24,7 @@ app.add_middleware(
 app.mount(
     "/",
     StaticFiles(
-        directory="./Programowanie_zespolowe/src/frontend", html=True
+        directory="./src/frontend", html=True
     ),
     name="frontend",
 )

@@ -1,0 +1,90 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.loginviewContainer{
+
+    width: 100%;
+    height: calc(100vh - 40px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginviewTitle{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.loginviewTitleWrapper{
+    width: max-content;
+    height: max-content;
+    font-size: larger;
+    text-align: center;
+    vertical-align: center;
+}
+
+.loginviewWrapper{
+    width: max-content;
+    height: max-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 10px;
+}
+
+.loginviewForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.loginviewLabel{
+    color: gray;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.loginviewInput{
+    margin-bottom: 20px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: gray;
+}
+
+.loginviewSubmit{
+    text-align: center;
+    padding: 4px;
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.loginViewRedirect{
+    margin-top: 10px;
+    font-size: smaller;
+}
+
+.registerViewRedirect{
+    margin-top: 10px;
+    font-size: smaller;
+}
+
+.loginviewErrorMsg{
+    font-size: 10px;
+    color: red;
+    margin-top: 10px;
+}
